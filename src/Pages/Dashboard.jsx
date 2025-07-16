@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { Link, Outlet } from "react-router-dom";
 import { ChevronDown, Search } from "lucide-react";
-import Sidebar from "./Sidebar";
-import Imageslider from "./Imageslider";
-import Todaysecond from "./flash-sale";
-import Categories from "./categories";
-import Selling from "./month";
-import Product from "./Product";
-import Featured from "./Arrival";
-import Servies from "./Servies";
-import BottomNavigation from "./Bottom Navigation-bar";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const Dashboard = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -45,14 +38,20 @@ const Dashboard = () => {
       {/* Header & Navigation */}
       <div className="main-container py-3 px-6 flex items-center justify-between">
         <header className="flex items-center gap-10 h-20">
-          <ul className="flex items-center gap-10">
-            <li className="text-4xl font-semi-bold text-[#000000] pl-25 pr-40">Exclusive</li>
-            <li className=" cursor-pointer text-2xl">Home</li>
-            <li className=" cursor-pointer text-2xl">Contact</li>
-            <li className=" cursor-pointer text-2xl">About</li>
-            <li className=" cursor-pointer text-2xl">Sign Up?</li>
-          </ul>
-        </header>
+  <ul className="flex items-center gap-10">
+    <li className="text-4xl font-semibold text-[#000000] pl-24 pr-40">Exclusive</li>
+    <li className="cursor-pointer text-2xl">
+      <Link to="/home">Home</Link>
+    </li>
+    <li className="cursor-pointer text-2xl">
+      <Link to="/contact">Contact</Link>
+    </li>
+    <li className="cursor-pointer text-2xl">
+      <Link to="/about">About</Link>
+    </li>
+   <a href="/signup"> <li className="cursor-pointer text-2xl">Sign Up?</li></a>
+  </ul>
+</header>
 
         <div className="border rounded px-1 py-1 w-[347px] bg-[#87CEEB1A] flex items-center">
           <input
@@ -65,32 +64,125 @@ const Dashboard = () => {
 
         <div className="flex gap-5 mr-20">
           <img src="/maine/Heart.png" alt="heart" className="h-[35px] w-[40px]" />
-          <img src="/maine/Cart1-image.png" alt="Cart1 with buy" className="h-[35px] w-[40px]" />
+          <img src="/maine/Cart1-image.png" alt="Cart1 with buy" className="h-[35px] w-[40px]"/>
+          <Link to="/account">
+           <img
+             src="/maine/user.png"
+             alt="User Account"
+             className="h-[35px] w-[40px] cursor-pointer"
+           />
+         </Link>
         </div>
       </div>
-
-      {/* Horizontal Line */}
       <hr className="border-1 border-black " />
+          <div><Outlet /></div>
 
-      {/* Sidebar  */}
-      <div className="flex">
-       
-        <aside className="w-[20rem] border-r border-black p-4 bg-gray-100">
-          <Sidebar />
-        </aside>
-{/* Imageslider */}
-        <div className="p-4 flex-1">
-            <Imageslider/>
-        </div>
-      </div>
-             <Todaysecond/>
-    <Categories/>
-    <Selling/>
-    <Product/>
-    <Featured/>
-    <Servies/>
-    <BottomNavigation/>
-    </>
+      
+
+
+    
+
+
+           <div className="bg-black text-white px-6 py-10 mt-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+                  
+                  {/* Exclusive / Subscribe Section */}
+                  <div className="space-y-3">
+                    <h1 className="text-3xl font-bold">Exclusive</h1>
+                    <p className="text-2xl font-semibold">Subscribe</p>
+                    <p className="text-2xl font-semibold">Get 10% off your first order</p>
+          
+                    <div className="flex items-center border border-gray-600 rounded bg-black w-60">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="flex-1 p-2 bg-black text-white placeholder-gray-400 focus:outline-none"
+                      />
+                      <button className="p-2">
+                        <img src="/bottom-image/icon-send.png" alt="Send" className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+          
+                  {/* Support Section */}
+                  <div className="space-y-3">
+                    <h1 className="text-3xl font-bold">Support</h1>
+                    <p className="text-2xl font-semibold">111 Bijoy Sarani, Dhaka,<br />DH 1515, Bangladesh.</p>
+                    <p className="text-2xl font-semibold">exclusive@gmail.com</p>
+                    <p className="text-2xl font-semibold">+88 382 473 4578</p>
+                  </div>
+          
+                  {/* Account Section */}
+                  <div className="space-y-3">
+                    <h1 className="text-3xl font-bold">Account</h1>
+                    <ul className="space-y-1 text-2xl font-semibold">
+                      <li className="hover:text-blue-400 cursor-pointer">My Account</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Login / Register</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Cart</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Wishlist</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Shop</li>
+                    </ul>
+                  </div>
+          
+                  {/* Quick Links */}
+                  <div className="space-y-3">
+                    <h1 className="text-3xl font-bold">Quick Links</h1>
+                    <ul className="space-y-1 text-2xl font-semibold">
+                      <li className="hover:text-blue-400 cursor-pointer">Privacy Policy</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Terms of Use</li>
+                      <li className="hover:text-blue-400 cursor-pointer">FAQ</li>
+                      <li className="hover:text-blue-400 cursor-pointer">Contact</li>
+                    </ul>
+                  </div>
+          
+                  {/* App Download Section with Social Icons */}
+                  <div className="space-y-3">
+                    <h1 className="text-3xl font-bold">Download App</h1>
+                    <p className="text-2xl font-semibold">Save $3 with App New User only</p>
+          
+                    {/* Scanner + Store Links */}
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-4">
+                        {/* Scanner */}
+                        <div className="flex-shrink-0">
+                          <img src="/bottom-image/Qr Code.png" alt="Scanner" className="w-30 h-24" />
+                        </div>
+          
+                        {/* Store Buttons */}
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center gap-2">
+                            <img src="/bottom-image/googlePay.png" alt="Google Play" className="w-30 h-12" />
+                            
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <img src="/bottom-image/AppStore.png" alt="Apple Store" className="w-32 h-12" />
+                      
+                          </div>
+                        </div>
+                      </div>
+          
+                      {/* Social Media Row */}
+                      <div className="flex gap-10 mt-4">
+                        <a href="#" className="text-gray-400 hover:text-blue-500 text-lg">
+                          <FaFacebookF />
+                        </a>
+                        <a href="#" className="text-gray-400 hover:text-pink-400 text-lg">
+                          <FaInstagram />
+                        </a>
+                        <a href="#" className="text-gray-400 hover:text-sky-400 text-lg">
+                          <FaTwitter />
+                        </a>
+                        <a href="#" className="text-gray-400 hover:text-blue-300 text-lg">
+                          <FaLinkedinIn />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+    </> 
+
   );
 };
 
